@@ -1,0 +1,8 @@
+Add an option in the edit menu to change the font
+
+TEXTAREA -> txtEditor -> getCharacters -> keytyped
+LABEL    -> lblDisplay
+OPEN     ->  btnOpen -> onOpen  <--------  Open Text File
+SAVE     ->  btnSave -> onSave  <--------  Save Text File
+EDIT     ->  btnEdit -> onEdit              Close -> onExit
+LOCK     ->  btnLock -> onLock
