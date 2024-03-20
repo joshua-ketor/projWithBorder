@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class HelloController {
@@ -81,8 +82,22 @@ public class HelloController {
     }
 
     @FXML
-    void onSave(ActionEvent event) {
+    void onSave(ActionEvent event) throws FileNotFoundException {
+        // ADD FILTERS TO SHOW ONLY TEXT FILES
+//        dialogBox.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files (*.txt)", "*.txt"));
 
+        File selectedFile = dialogBox.showSaveDialog(new Stage());
+        if(selectedFile==null) {
+            // DO NOTHING
+        } else{
+            PrintWriter output = new PrintWriter(selectedFile);
+            output.println(txtEditor.getText());
+            output.close();
+
+            //  CLEAR CONTENT AFTER SAVING
+            txtEditor.setText("");
+            lblDisplay.setText("Characters Typed: " + txtEditor.getText().length());
+        }
     }
 
     @FXML
